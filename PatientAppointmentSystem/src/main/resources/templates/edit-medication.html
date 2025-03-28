@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Medication</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Edit Medication</h1>
+
+  <!-- Back to Medications Link -->
+  <a href="/medications" class="btn btn-secondary mb-3">Back to Medications</a>
+
+  <!-- Edit Medication Form -->
+  <form th:action="@{/medications/edit/{id}(id=${medication.id})}" th:object="${medication}" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" th:field="*{name}" required>
+    </div>
+    <div class="mb-3">
+      <label for="dosage" class="form-label">Dosage</label>
+      <input type="text" class="form-control" id="dosage" th:field="*{dosage}" required>
+    </div>
+    <div class="mb-3">
+      <label for="instructions" class="form-label">Instructions</label>
+      <input type="text" class="form-control" id="instructions" th:field="*{instructions}" required>
+    </div>
+    <div class="mb-3">
+      <label for="patientId" class="form-label">Patient ID</label>
+      <input type="number" class="form-control" id="patientId" th:field="*{patient.id}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Medication</button>
+  </form>
+
+  <!-- Error Message -->
+  <p th:if="${error}" class="text-danger mt-3" th:text="${error}"></p>
+</div>
+</body>
+</html>

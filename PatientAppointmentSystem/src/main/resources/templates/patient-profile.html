@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <!-- Bootstrap CSS from CDN -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Profile Card -->
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Patient Profile</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Success Message -->
+                    <div th:if="${success}" class="alert alert-success" role="alert">
+                        <span th:text="${success}"></span>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+
+                    <!-- Profile Form -->
+                    <form th:action="@{/patients/profile}" method="post" th:object="${patient}">
+                        <input type="hidden" th:field="*{id}" />
+
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter Full Name" required />
+                        </div>
+
+                        <!-- Email Field (Read-Only) -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Enter Email" required readonly />
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" id="phone" th:field="*{phone}" class="form-control" placeholder="Enter Phone Number" required />
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter New Password" required />
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Back to Dashboard Button -->
+            <div class="text-center mt-3">
+                <a th:href="@{/patients/dashboard}" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS from CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7SKvqn2jQKHL3WQoS1dGJUpGpCJo2j7fkhj7jlhF7v4lFb4Ij6U64y4MVBp2w3"
+        crossorigin="anonymous"></script>
+</body>
+</html>

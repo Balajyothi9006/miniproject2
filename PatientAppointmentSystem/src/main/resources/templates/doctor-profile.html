@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" />
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Doctor Portal</a>
+    <div class="ml-auto">
+        <a th:href="@{/doctors/logout}" class="btn btn-danger">Logout</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>Doctor Profile</h2>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label><strong>Name:</strong></label>
+                        <p class="form-control-plaintext" th:text="${doctor.name}">Dr. Smith</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label><strong>Email:</strong></label>
+                        <p class="form-control-plaintext" th:text="${doctor.email}">smith@example.com</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label><strong>Specialization:</strong></label>
+                        <p class="form-control-plaintext" th:text="${doctor.specialization}">Cardiology</p>
+                    </div>
+
+
+
+                    <div class="text-center mt-4">
+                        <a th:href="@{/doctors/profile/edit}" class="btn btn-warning btn-lg">Edit Profile</a>
+                        <a th:href="@{/doctors/logout}" class="btn btn-danger btn-lg">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js}"></script>
+<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
